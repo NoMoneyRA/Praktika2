@@ -1,0 +1,132 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    overflow-y: auto;
+    height: auto;
+    min-height: 100vh;
+}
+
+#app {
+    width: 80%;
+    max-width: 1200px;
+}
+
+.task-manager {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    text-align: center;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.task-manager h2 {
+    color: #333;
+}
+
+.task-container {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.task-column {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    min-height: 300px;
+    transition: transform 0.3s;
+}
+
+.task-column:hover {
+    transform: scale(1.02);
+}
+
+.task-card {
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 15px;
+    animation: slideIn 0.5s ease-in-out;
+}
+
+.task-card h3 {
+    margin: 0 0 10px;
+    font-size: 1.3em;
+    color: #333;
+}
+
+.task-card ul {
+list-style: none;
+    padding: 0;
+}
+
+.task-card li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 0;
+}
+
+.task-card input[type="checkbox"] {
+    transform: scale(1.2);
+}
+
+.task-card p {
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+input[type="text"] {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: box-shadow 0.3s;
+}
+
+input[type="text"]:focus {
+    box-shadow: 0 0 10px rgba(118, 75, 162, 0.5);
+    outline: none;
+}
+
+button {
+    background: #764ba2;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #5a3d92;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
