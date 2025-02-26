@@ -60,7 +60,24 @@ const TaskColumn = {
         restrictFirstColumn: Boolean,
     },
     components: { TaskCard },
-
+    template: `
+        <div class="task-column">
+            <h2>Столбец {{ columnID }}</h2>
+            <div v-for="(card, index) in taskCards" :key="index">
+                <TaskCard
+                  :taskTitle="card.title"
+                  :taskItems="card.list"
+                  :taskColumn="columnID"
+                  :taskIndex="index"
+                  :completionTime="card.completedAt"
+                  :relocateTask="relocateTask"
+                  :modifyTask="modifyTask"
+                  :secondColumnTaskCount="secondColumnTaskCount"
+                  :restrictFirstColumn="restrictFirstColumn"
+                />
+            </div>
+        </div>
+    `,
 };
 
 const taskManager = new Vue({
