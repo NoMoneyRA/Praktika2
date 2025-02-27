@@ -142,6 +142,11 @@ const taskManager = new Vue({
                 this.newTask.list.push('');
             }
         },
+        removeTaskItem(index) {
+            if (this.newTask.list.length > 3) {
+                this.newTask.list.splice(index, 1);
+            }
+        },
     },
     components: { TaskColumn },
     template: `
