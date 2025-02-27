@@ -97,8 +97,18 @@ const taskManager = new Vue({
             restrictFirstColumn: false,
         };
     },
-
-
+    methods: {
+        modifyTask(index, column, data) {
+            Object.assign(this.taskColumns[column - 1].taskCards[index], data);
+            this.saveToStorage();
+        }, // для сохранения изменений
+        relocateTask(taskIndex, columnIndex) {
+            if (taskIndex.column === 1 && this.restrictFirstColumn) return;
+            const task = this.taskColumns[taskIndex.column - 1].taskCards.splice(taskIndex.index, 1)[0];
+            this.taskColumns[columnIndex - 1].taskCards.push(task);
+            this.saveToStorage();
+            this.evaluateColumnRestrictions(); // ограничение на 1 колонку
+        },
         evaluateColumnRestrictions() {
             const isSecondColumnFull = this.taskColumns[1].taskCards.length >= 5;
             const isFirstColumnBlocked = this.taskColumns[0].taskCards.some(task => {
