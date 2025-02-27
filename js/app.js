@@ -137,7 +137,11 @@ const taskManager = new Vue({
                 this.newTask = { title: '', list: ['', '', ''], completedAt: null };
             }
         },
-
+        addTaskItem() {
+            if (this.newTask.list.length < 5) {
+                this.newTask.list.push('');
+            }
+        },
     },
     components: { TaskColumn },
     template: `
