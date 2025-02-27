@@ -117,36 +117,7 @@ const taskManager = new Vue({
             });
             this.restrictFirstColumn = isSecondColumnFull && isFirstColumnBlocked;
         },
-        saveToStorage() {
-            localStorage.setItem('column1', JSON.stringify(this.taskColumns[0].taskCards));
-            localStorage.setItem('column2', JSON.stringify(this.taskColumns[1].taskCards));
-            localStorage.setItem('column3', JSON.stringify(this.taskColumns[2].taskCards));
-        },
-        addTask() {
-            if (this.taskColumns[0].taskCards.length >= 3) {
-                alert("Нельзя добавить больше 3 задач в первый столбец");
-                return;
-            }
-            if (this.newTask.title.trim() && this.newTask.list.every(item => item.trim())) {
-                this.taskColumns[0].taskCards.push({
-                    title: this.newTask.title,
-                    list: this.newTask.list.map(text => ({ text, done: false })),
-                    completedAt: null
-                });
-                this.saveToStorage();
-                this.newTask = { title: '', list: ['', '', ''], completedAt: null };
-            }
-        },
-        addTaskItem() {
-            if (this.newTask.list.length < 5) {
-                this.newTask.list.push('');
-            }
-        },
-        removeTaskItem(index) {
-            if (this.newTask.list.length > 3) {
-                this.newTask.list.splice(index, 1);
-            }
-        },
+
     },
     components: { TaskColumn },
     template: `
