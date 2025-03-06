@@ -117,6 +117,10 @@ const taskManager = new Vue({
             localStorage.setItem('column3', JSON.stringify(this.taskColumns[2].taskCards));
         },
         openModal() {
+            if (this.taskColumns[1].taskCards.length >= 5) {
+                alert("Нельзя добавить новую задачу, пока во втором столбце 5 задач.");
+                return;
+            }
             if (this.taskColumns[0].taskCards.length >= 3) {
                 alert("Нельзя добавить больше 3 задач в первый столбец");
                 return;
